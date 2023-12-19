@@ -1,0 +1,89 @@
+> Problem: [494. 目标和](https://leetcode.cn/problems/target-sum/description/)
+
+[TOC]
+
+# 思路
+
+按照题意，其实就是准备两个背包，一个背包`package_a`存放标记为正的元素，另一个背包`package_b`存放标记为负的元素。`package_a - package_b = target`。
+
+设nums的元素和为`sum`, 可以列出方程：
+
+* c++
+
+```c++
+package_a - package_b = target;
+package_a + package_b = sum;
+```
+
+则 `package_a = (target + sum)/2`。
+所以根据题意给的`target`和`sum`，我们可以求出`package_a`的值。
+
+那这道题就可以转化为：给定一个大小为`package_a`的背包，有多少种组合方式能把背包装满？ 妥妥的`0-1`背包。
+
+# Code
+
+* []
+
+```C++
+class Solution {
+public:
+    int findTargetSumWays(vector<int>& nums, int target) {
+        // pack_a - pack_b = target
+        // pack_a + pack_b = sum
+        // pack_a = (sum + target) / 2
+
+        // 背包问题：
+        //      给定一个大小为 pack_cap 的背包，
+        //      有多少种组合方式能把背包装满？
+
+        // 预处理，把nums中的零元素移除，
+        // 否则会干扰背包的计算。
+        // 并且要记下原数组中零元素的个数，设为zero_count。
+        vector<int> nums_without_zero;
+        nums_without_zero.reserve(nums.size());
+        int zero_count = 0;
+        for (auto num: nums) {
+            if (num == 0) { 
+                zero_count++; 
+            } else {
+                nums_without_zero.push_back(num);
+            }
+        }
+
+        // 计算背包的大小，pack_cap
+        auto sum = std::accumulate(nums_without_zero.begin(), nums_without_zero.end(), 0);
+        if ((sum + target) & 1) { return 0; }
+        auto pack_cap = (sum + target) / 2;
+        // 如果背包大小为负，本题无解
+        if (pack_cap < 0) { return 0; }
+
+        // dp init.
+        // 放个0元素，方便处理dp[i][0]边界
+        nums_without_zero.insert(nums_without_zero.begin(), 0);
+        // dp[i][j] 表示背包容量为i时, 从nums_without_zero[0:j]里挑东西
+        // 把背包装满, 有多少种组合方式。
+        int dp[pack_cap+1][nums_without_zero.size()];
+        memset(dp, 0, sizeof(int) * (pack_cap+1) * nums_without_zero.size());
+        // 背包为0时，不需要放东西进去，所以dp[0][i] = 1
+        for (int i = 0; i < nums_without_zero.size(); i++) {
+            dp[0][i] = 1;
+        }
+
+        for (int i = 1; i < nums_without_zero.size(); i++) {
+            for (int cap = 1; cap <= pack_cap; cap++) {
+                // 如果把nums_without_zero[i]放进背包里
+                auto select = (cap-nums_without_zero.at(i) < 0) ? 0 : dp[cap-nums_without_zero.at(i)][i-1];
+                // 如果不把nums_without_zero[i]放进背包里
+                auto unselect = dp[cap][i-1];
+                dp[cap][i] = select + unselect;
+            }
+        }
+
+        // 最后还要乘以零元素的组合：
+        //      每个0元素可以是+0，也可以是-0，但都不影响结果
+        //      如果有m个零元素，最终结果就是dp * (2^m)
+        return dp[pack_cap][nums_without_zero.size()-1] * std::pow(2, zero_count);
+    }
+};
+```
+

@@ -1,0 +1,53 @@
+树上DP，访问每个节点为O(1)，总共O(n)
+
+`dp(root, sum, 0)`:在以root为根的树里，和为sum且不经过root的路径数量
+
+`dp(root, sum, 1)`:在以root为根的树里，和为sum且经过root的路径数量
+
+转移方程:
+`dp(root, sum, 0)`为以下几项的和:
+- `dp(left_child, sum, 0)`
+- `dp(left_child, sum, 1)`
+- `dp(right_child, sum, 0)`
+- `dp(right_child, sum, 1)`
+
+`dp(root, sum, 1)`为以下几项的和 (`val`为root的权值)：
+- `dp(left_child, sum - val, 1)`: 从左子节点开始，和为`sum - val`的路径加上root节点即可达到目标
+- `dp(right_child, sum - val, 1)`: 从右子节点开始，和为`sum - val`的路径加上root节点即可达到目标
+- `(sum == val) ? 1 : 0`: 如果root的权值为sum，root可单独构成一条路径
+
+时间复杂度: `O(n)`
+在每个节点上的操作为`O(1)`，总时间复杂度为`O(n)`
+
+* 
+
+```
+class Solution {
+public:
+    int dp(TreeNode* root, long long targetSum, bool inPath) {
+        if(!root) return 0;
+        if(!root -> left && !root -> right) return (targetSum == root -> val) && inPath;
+
+        TreeNode *l = root -> left, *r = root -> right;
+
+        if(inPath) {
+            long long val = root -> val;
+            int canEnd = (targetSum == val);
+            return canEnd + dp(l, targetSum - val, 1) + dp(r, targetSum - val, 1);
+        }
+
+        int l0 = dp(l, targetSum, 0);
+        int l1 = dp(l, targetSum, 1);
+
+        int r0 = dp(r, targetSum, 0);
+        int r1 = dp(r, targetSum, 1);
+
+        return l0 + l1 + r0 + r1;
+    }
+
+    int pathSum(TreeNode* root, int targetSum) {
+        return dp(root, targetSum, 0) + dp(root, targetSum, 1);
+    }
+};
+```
+

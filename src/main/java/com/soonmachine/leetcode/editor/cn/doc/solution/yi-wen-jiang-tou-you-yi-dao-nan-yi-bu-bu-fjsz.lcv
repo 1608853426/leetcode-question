@@ -1,0 +1,324 @@
+# 【一文讲透】由易到难，一步步掌握回溯和动态规划！理解动态规划的本质就在现在！
+
+## Author By : SEU Morningstar
+
+本文意在从优化思想的角度推导出动态规划的本质是对dfs的优化，帮助你更好地理解回溯和动态规划！
+
+在做题时一定要先画出递归树，再从记忆化搜索、动态规划的角度去思考如何优化问题，不要一味地陷入寻找递推公式的误区。
+
+文章稍长，我们现在开始：
+
+## 方法一：穷尽法
+
+最简单的思路就是穷举出所有数字分别取正和负可能得到的目标和`sum`，再将穷举的和`sum`与目标和`target`进行比较，如果二者相等则表明找到了一组运算结果等于`target`的表达式;
+<br/>
+若`nums`中有`n`个整数，每个数能取正负两种情况，则需要列举的情况有`2^n`种。
+为了便于理解和书写代码，可以在手动画出递归树进行理解,递归树的执行顺序是深度优先的，所以这种暴力枚举的算法也可以叫做DFS。
+<br/>
+下面以 nums = [1,2,3], target = 2 举例：
+
+![方法一图示.png](https://pic.leetcode.cn/1685116633-sOobsM-%E6%96%B9%E6%B3%95%E4%B8%80%E5%9B%BE%E7%A4%BA.png)
+
+可以看出当`sum = target`时，根到该结点的路径就是一个解，在该例子中，解为 +1 -2 +3 = 2。
+<br/>
+当然，如果在递归函数中直接用`target减去当前选择的数`，则可以在`target = 0` 时找到一个解，该写法和上述思想一样，只是以另一种方式表达了当前数字和`sum`。
+
+![方法一另解.png](https://pic.leetcode.cn/1685117268-TUBHOy-%E6%96%B9%E6%B3%95%E4%B8%80%E5%8F%A6%E8%A7%A3.png)
+
+* 
+
+```
+class Solution {
+    int res;
+    public int findTargetSumWays(int[] nums, int target) {
+        dfs(0,nums,target);
+        return res;
+    }
+
+    /**
+     * layer为当前递归树层数，也代表了当前操作考虑nums数组中第几个数字
+     * 数组nums可以作为类的成员变量进行传递，这样可以减少传参次数，但为了演示回溯法所需全部参数，这里写在函数参数中
+     * target代表剩下的数字的目标和
+     */
+    void dfs(int layer, int[] nums, int target) {
+        if(layer == nums.length) {
+            // 代表nums中所有数字考虑完毕，到达了递归树的叶结点(该收集解了),如果target为0代表当前结点是一个解
+            if(target == 0) res++;
+            return;
+        }
+        dfs(layer + 1,nums,target + nums[layer]); // nums[layer] 取负
+        dfs(layer + 1,nums,target - nums[layer]); // nums[layer] 取正
+    }
+}
+```
+
+![方法一执行结果.png](https://pic.leetcode.cn/1685117900-zldlGC-%E6%96%B9%E6%B3%95%E4%B8%80%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
+可以看到DFS能够通过本题用例，但是许多动态规划的题目中会存在超时，所以我们需要对该方法进行优化。
+
+<br />
+
+### 问题转换
+
+- 我们不妨换一个角度考虑问题，这样有利于获得不同的结题思路
+  当目标和为`target`时，设nums中所有整数和为`sum`，未来我们取其中的正数和为`p`，负数和的绝对值为`n`，可以推导出：
+  sum = p + n
+  target = p - n
+  target = p - (sum - p)
+  target = 2p - sum
+  等价于 p = (target + sum) / 2
+  此时我们的问题转换```为从nums中选取m个数，使其和为 (target + sum) / 2`，是不是非常眼熟，这就是常见的`01背包`问题！
+  注意 `(target + sum)` 肯定是`偶数`(因为它等于 `2 * p`)，如果不是偶数则没有m个数的组合可以使它们的和为`(target + sum)`;
+
+此时我们可以推出以下方法：`子集法、自底向上回溯、记忆化搜索、动态规划(01背包)`，其中`自底向上回溯、记忆化搜索、动态规划`是逐步优化的过程。
+
+## 方法二：子集法
+
+思想与穷举法类似，但是我们对于每个数的策略变成了——`选 | 不选`，递归树如下：
+<br/>
+![方法二图示.png](https://pic.leetcode.cn/1685118938-XNgVnt-%E6%96%B9%E6%B3%95%E4%BA%8C%E5%9B%BE%E7%A4%BA.png)
+
+* 
+
+```
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+        // 计算 target 与 nums 中数字的和
+        int sum = target;
+        for(int num : nums) sum += num;
+        // 判断 sum 是否是奇数，是奇数则无解
+        if((sum & 1) == 1) return 0;
+        // 是偶数则需要从nums中找出一个子集，使其和的两倍为sum
+        return dfs(0,nums,sum / 2);
+    }
+
+    /**
+     * 选/不选思想
+     * @Return 返回值表示从当前层开始考虑，目标和为target的数字组合的个数
+     * dfs(n,target) = dfs(n-1,target) + dfs(n-1,target - nums[n])
+     * 递推公式理解：表示当前解由不选当前数字和选当前数字的解的数目构成
+     */
+    int dfs(int layer, int[] nums, int target) {
+        if (layer == nums.length) {
+            // 表示已经考虑完所有数字
+            return target == 0 ? 1 : 0;
+        }
+        return dfs(layer + 1, nums, target) + dfs(layer + 1, nums, target - nums[layer]);
+    }
+}
+```
+
+![方法二执行结果.png](https://pic.leetcode.cn/1685119397-ASybLb-%E6%96%B9%E6%B3%95%E4%BA%8C%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
+该方法求解出m个数字的子集，时空复杂度相比于方法一稍有降低(但是从运行结果上看还不如方法一)，但是还不够好。
+
+<br /> ## 方法三：自顶开始递归，自底向上计算 方法二是从第一个数字开始考虑，直到考虑完成所有n个数字后结束，如果将这个思路反过来，即先考虑取所有数字的可能情况，再考虑取n-1个数字可能出现的组合情况，那么我们就能得到截然不同的优化思路。 
+<br /> 换句话说，我们观察这个问题是否能够分解为规模更小的子问题，从方法二已经不难发现： `从n个数字中取m个数字使其和为target`这个问题，可以转化为`从n-1个数字中取m个数字使其和为target`与`从n-1个数字中取m-1个数字使其和为target`这两个子问题`解的合集`，说白了就是在`选 或 不选 第n个数字`两种情况下所产生的`解的个数之和`。 
+<br /> 我们换一个例子演示，`nums = [1,1,1],target = 2`
+
+用递归树表示如下，注意仔细观察该递归树和方法一、方法二的区别与联系：
+
+![方法三图解.jpg](https://pic.leetcode.cn/1685156199-gxISER-%E6%96%B9%E6%B3%95%E4%B8%89%E5%9B%BE%E8%A7%A3.jpg)
+
+方法的返回值为子问题的解(即`有多少个数字组合能使目标和为target`)，注意第m层的每个结点表示问题规模为m时的解，根结点就表示了该问题的解。
+
+调用该方法，它从上往下计算，找到子问题的解后再反馈到该问题中，很像语法制导翻译SDT中的R型属性定义。
+
+* 
+
+```
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+        int sum = target;
+        for(int num : nums) sum += num;
+        // 目标和为奇数或负数，绝无此种组合
+        if((sum & 1) == 1 || sum < 0) return 0;
+        return dfs(nums.length - 1,nums,sum / 2);
+    }
+
+    int dfs(int n, int[] nums, int target) {
+        // n < 0 表示已经考虑完所有数字，直接判断target是否为0即可
+        if (n < 0) return target == 0 ? 1 : 0;
+        // 该问题的解由子问题 选 | 不选 的解的个数组成，所以这里是加法
+        return dfs(n - 1, nums, target) + dfs(n - 1, nums, target - nums[n]);
+    }
+}
+```
+
+![方法三运行结果.jpg](https://pic.leetcode.cn/1685156816-ziclgz-%E6%96%B9%E6%B3%95%E4%B8%89%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
+**看到这里，你可能会问，这性能并没有提升啊，复杂度还是一样的，笔者你在搞什么飞机！**
+
+但是通过仔细观察后，细心的你一定发现了，在上面的递归树中，许多子问题的答案被**重复计算了**，例如图中黄色的结点：
+
+![重复计算.jpg](https://pic.leetcode.cn/1685157007-hSqogF-%E9%87%8D%E5%A4%8D%E8%AE%A1%E7%AE%97.jpg)
+
+## 方法四：记忆化搜索
+
+所以我们可以使用`记忆化搜索`，**定义一个memo数组保存每个子问题的计算结果，来避免这种重复计算**
+`dfs(n,nums,target)表示在nums[0..n-1]中选出m个数（m <= n）使其和为 target 的方案数`
+<br/>
+使用memo记忆它的计算结果：
+`memo[i][j]表示在nums[0..i-1]中选出m个数（m <= i）使其和为 j 的方案数`
+![记忆化搜索.jpg](https://pic.leetcode.cn/1685157188-UCJDgR-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2.jpg)
+
+记忆化搜索的代码实现比较简单，大家意会一下就好，可以当作模板记忆：
+
+* 
+
+```
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+        int sum = target;
+        for(int num : nums) sum += num;
+        // 目标和为奇数或负数，绝无此种组合
+        if((sum & 1) == 1 || sum < 0) return 0;
+        // 定义数组memo来记录dfs的计算结果，注意由于dfs中变化的参数有两个，所以memo是二维数组
+        // 数组列宽为sum / 2 + 1，因为我们memo[nums.length-1][sum / 2]是问题的解
+        int[][] memo = new int[nums.length][sum / 2 + 1];
+        for(int i = 0;i < memo.length;i++) Arrays.fill(memo[i],-1);
+        return dfs(nums.length - 1,nums,sum / 2,memo);
+    }
+
+    int dfs(int n, int[] nums, int target,int[][] memo) {
+        // target小于0，找不到解了
+        if(target < 0) return 0;
+        // n < 0 表示已经考虑完所有数字，直接判断target是否为0即可
+        if (n < 0) return target == 0 ? 1 : 0;
+        // memo[n][target] == -1 表示问题dfs(n,nums,target,memo)这个子问题的解还没有被计算过
+        if(memo[n][target] == -1) {
+            // 计算该问题的解并记录
+            memo[n][target] = dfs(n - 1, nums, target,memo) + dfs(n - 1, nums, target - nums[n],memo);
+        }
+        return memo[n][target];
+    }
+}
+```
+
+![记忆化搜索运行结果.jpg](https://pic.leetcode.cn/1685157794-OjFiws-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
+
+*但是为什么比上面所有方法都慢 QAQ*
+
+## 方法五：动态规划（01背包）
+
+实际上我们在记忆化搜索中使用了递归，如果我们直接从递归树的叶结点开始从上计算到根结点，是不是就可以省略递归中的“递”这个过程了呢，当然自底向上的计算需要做好准备工作，我们将上面的`memo`数组改名为`dp`，但是两者表示的含义是一样的，
+`dp[i][j]表示在nums[0..i-1]中选出m个数（m <= i）使其和为 j 的方案数`
+<br/>
+由上面递归树可以轻松得出 `dp[i][j] = dp[i-1][j] + dp[i-1][j-nums[i]]`，这个公式是不是异常熟悉，关于01背包问题的详解和优化这里就不细说了，本文核心为从原始思想优化到动态规划思想。
+
+* 
+
+```
+class Solution {
+    /**
+     * 记忆化搜索优化成01背包问题
+     */
+    public int findTargetSumWays(int[] nums, int target) {
+        int sum = target;
+        for(int num : nums) sum += num;
+        if((sum & 1) == 1 || sum < 0) return 0;
+        int[][] dp = new int[nums.length][sum / 2 + 1];
+        // 注意：dp[0][0] 表示为递归树中的叶节点，表示考虑完nums中所有数且target已经为0的情况(即找到了一个解)，所以dp[0][0]需要初始化为1
+        dp[0][0] = 1;
+        // 因为是自下网上计算，所以需要先给出最小规模问题的解
+        // 仅考虑第一个数，即nums[0]时，他仅能构成和为target = nums[0]的一个解
+        // 如果nums[0] = 0，则 选 | 不选它都能构成target = 0的解，所以解有两个
+        if(nums[0] < dp[0].length) {
+            if(nums[0] == 0) dp[0][nums[0]] = 2;
+            else dp[0][nums[0]] = 1;
+        }
+        // 自底向上计算
+        for(int i = 1;i < dp.length;i++) {
+            for(int j = 0;j <= sum / 2;j++) {
+                dp[i][j] = dp[i - 1][j];
+                if(j >= nums[i]) {
+                    dp[i][j] += dp[i - 1][j - nums[i]];
+                }
+            }
+        }
+        // 答案就是数组最后一个元素啦
+        return dp[dp.length-1][sum / 2];
+    }
+}
+```
+
+![方法四运行结果.jpg](https://pic.leetcode.cn/1685158664-QWBlsY-%E6%96%B9%E6%B3%95%E5%9B%9B%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
+**观察到dp数组中第i行的计算仅需要i-1行的计算，所以采用滚动数组的方式进行优化，简而言之就是仅需要dp数组仅需要两行即可**
+
+注意此时dp的行数和nums已经不一样了，我们需要`将nums中偶数行(2n,n = 1,2,3,4...)映射到dp[0]中，奇数行(2n-1,n=1,2,3,4...)映射到dp[1]中，对2取模即可，用位运算 i&1 可以加快计算`
+
+* 
+
+```
+class Solution {
+    /**
+     * 记忆化搜索优化成01背包问题
+     */
+    public int findTargetSumWays(int[] nums, int target) {
+        int sum = target;
+        for(int num : nums) sum += num;
+        if((sum & 1) == 1 || sum < 0) return 0;
+        int[][] dp = new int[2][sum / 2 + 1];
+        // 注意：dp[0][0] 表示为递归树中的叶节点，表示考虑完nums中所有数且target已经为0的情况(即找到了一个解)，所以dp[0][0]需要初始化为1
+        dp[0][0] = 1;
+        // 因为是自下网上计算，所以需要先给出最小规模问题的解
+        // 仅考虑第一个数，即nums[0]时，他仅能构成和为target = nums[0]的一个解
+        // 如果nums[0] = 0，则 选 | 不选它都能构成target = 0的解，所以解有两个
+        if(nums[0] < dp[0].length) {
+            if(nums[0] == 0) dp[0][nums[0]] = 2;
+            else dp[0][nums[0]] = 1;
+        }
+        // 自底向上计算
+        for(int i = 1;i < nums.length;i++) {
+            for(int j = 0;j <= sum / 2;j++) {
+                dp[i&1][j] = dp[(i - 1)&1][j];
+                if(j >= nums[i]) {
+                    dp[i&1][j] += dp[(i - 1)&1][j - nums[i]];
+                }
+            }
+        }
+        // 答案就是数组最后一个元素啦
+        return dp[(nums.length-1)&1][sum / 2];
+    }
+}
+```
+
+![滚动数组优化.jpg](https://pic.leetcode.cn/1685158982-FOrXJN-%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84%E4%BC%98%E5%8C%96.jpg)
+**再观察到第i行除了仅用到第i-1行计算之外，第i行第j列的计算仅用到了第i-1行第j列之前元素的**
+所以我们如果从右往左计算，还可以将dp数组优化为一维的形式,这里就交给读者进行思考了，一维形式的dp数组是背包问题中必须掌握的，
+它不仅计算简单，空间复杂度也最低，注意我们仅仅优化了空间，时间复杂度相比其他形式的动态规划还是不变的。
+<br/>
+
+* 
+
+```
+class Solution {
+    /**
+     * 记忆化搜索优化成01背包问题
+     */
+    public int findTargetSumWays(int[] nums, int target) {
+        int sum = target;
+        for(int num : nums) sum += num;
+        if((sum & 1) == 1 || sum < 0) return 0;
+        int[] dp = new int[sum / 2 + 1];
+        dp[0] = 1;
+        // 因为是自下网上计算，所以需要先给出最小规模问题的解
+        // 仅考虑第一个数，即nums[0]时，他仅能构成和为target = nums[0]的一个解
+        // 如果nums[0] = 0，则 选 | 不选它都能构成target = 0的解，所以解有两个
+        if(nums[0] < dp.length) {
+            if(nums[0] == 0) dp[nums[0]] = 2;
+            else dp[nums[0]] = 1;
+        }
+        // 自底向上计算
+        for(int i = 1;i < nums.length;i++) {
+            for(int j = sum / 2;j >= nums[i];j--) {
+                dp[j] = dp[j] + dp[j - nums[i]];
+            }
+        }
+        // 答案就是数组最后一个元素
+        return dp[sum / 2];
+    }
+}
+```
+
+![一维形式dp.jpg](https://pic.leetcode.cn/1685159269-DMEKgg-%E4%B8%80%E7%BB%B4%E5%BD%A2%E5%BC%8Fdp.jpg)
+
