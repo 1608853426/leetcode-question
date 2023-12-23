@@ -83,8 +83,7 @@ package com.soonmachine.leetcode.editor.cn;
  *  时间复杂度：O(m+n)
  *  空间复杂度：O(1)
  */
- *
- */
+
 class IntersectionOfTwoLinkedListsLcci{
     public static void main(String[] args){
         Solution solution = new  IntersectionOfTwoLinkedListsLcci().new Solution();
