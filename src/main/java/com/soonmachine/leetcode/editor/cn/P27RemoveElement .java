@@ -77,19 +77,26 @@ class P27RemoveElement{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int removeElement(int[] nums, int val) {
-        if (nums.length == 0) {
+        if (nums.length == 0){
             return 0;
         }
-        int fastIndex = 0, slowIndex = 0;
-        while (fastIndex < nums.length){
-            while (fastIndex < nums.length && nums[fastIndex] == val){
-                fastIndex ++;
+        int fast = 0, slow = 0;
+        int ans = nums.length;
+        while (fast < nums.length){
+            while (nums[fast] == val){
+                fast ++;
+                ans --;
+                if (fast == nums.length){
+                    return ans;
+                }
             }
-            if (fastIndex < nums.length) {
-                nums[slowIndex ++] = nums[fastIndex ++];
-            }
+            int tmp = nums[slow];
+            nums[slow] = nums[fast];
+            nums[fast] = tmp;
+            fast ++;
+            slow ++;
         }
-        return slowIndex;
+        return ans;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
