@@ -3,6 +3,17 @@
   <component name="LeetcodeEditor">
     <option name="projectConfig">
       <map>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P102BinaryTreeLevelOrderTraversal .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P102BinaryTreeLevelOrderTraversal .md" />
+              <option name="frontendQuestionId" value="leetcode.cn102" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P102BinaryTreeLevelOrderTraversal .java" />
+              <option name="titleSlug" value="binary-tree-level-order-traversal" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P1047RemoveAllAdjacentDuplicatesInString .java">
           <value>
             <LeetcodeEditor>
@@ -14,6 +25,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P107BinaryTreeLevelOrderTraversalIi .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P107BinaryTreeLevelOrderTraversalIi .md" />
+              <option name="frontendQuestionId" value="leetcode.cn107" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P107BinaryTreeLevelOrderTraversalIi .java" />
+              <option name="titleSlug" value="binary-tree-level-order-traversal-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P142LinkedListCycleIi .java">
           <value>
             <LeetcodeEditor>
@@ -22,6 +44,28 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P142LinkedListCycleIi .java" />
               <option name="titleSlug" value="linked-list-cycle-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P144BinaryTreePreorderTraversal .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P144BinaryTreePreorderTraversal .md" />
+              <option name="frontendQuestionId" value="leetcode.cn144" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P144BinaryTreePreorderTraversal .java" />
+              <option name="titleSlug" value="binary-tree-preorder-traversal" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P145BinaryTreePostorderTraversal .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P145BinaryTreePostorderTraversal .md" />
+              <option name="frontendQuestionId" value="leetcode.cn145" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P145BinaryTreePostorderTraversal .java" />
+              <option name="titleSlug" value="binary-tree-postorder-traversal" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -88,6 +132,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P1901FindAPeakElementIi .java" />
               <option name="titleSlug" value="find-a-peak-element-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P199BinaryTreeRightSideView .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P199BinaryTreeRightSideView .md" />
+              <option name="frontendQuestionId" value="leetcode.cn199" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P199BinaryTreeRightSideView .java" />
+              <option name="titleSlug" value="binary-tree-right-side-view" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -344,6 +399,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P429NAryTreeLevelOrderTraversal .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P429NAryTreeLevelOrderTraversal .md" />
+              <option name="frontendQuestionId" value="leetcode.cn429" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P429NAryTreeLevelOrderTraversal .java" />
+              <option name="titleSlug" value="n-ary-tree-level-order-traversal" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P437PathSumIii .java">
           <value>
             <LeetcodeEditor>
@@ -454,6 +520,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P637AverageOfLevelsInBinaryTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P637AverageOfLevelsInBinaryTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn637" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P637AverageOfLevelsInBinaryTree .java" />
+              <option name="titleSlug" value="average-of-levels-in-binary-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P6ZigzagConversion .java">
           <value>
             <LeetcodeEditor>
@@ -528,6 +605,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P79WordSearch .java" />
               <option name="titleSlug" value="word-search" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P94BinaryTreeInorderTraversal .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P94BinaryTreeInorderTraversal .md" />
+              <option name="frontendQuestionId" value="leetcode.cn94" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P94BinaryTreeInorderTraversal .java" />
+              <option name="titleSlug" value="binary-tree-inorder-traversal" />
             </LeetcodeEditor>
           </value>
         </entry>
