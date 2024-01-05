@@ -619,6 +619,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P501FindModeInBinarySearchTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P501FindModeInBinarySearchTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn501" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P501FindModeInBinarySearchTree .java" />
+              <option name="titleSlug" value="find-mode-in-binary-search-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P513FindBottomLeftTreeValue .java">
           <value>
             <LeetcodeEditor>
@@ -638,6 +649,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P515FindLargestValueInEachTreeRow .java" />
               <option name="titleSlug" value="find-largest-value-in-each-tree-row" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P530MinimumAbsoluteDifferenceInBst .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P530MinimumAbsoluteDifferenceInBst .md" />
+              <option name="frontendQuestionId" value="leetcode.cn530" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P530MinimumAbsoluteDifferenceInBst .java" />
+              <option name="titleSlug" value="minimum-absolute-difference-in-bst" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -696,6 +718,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P654MaximumBinaryTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P654MaximumBinaryTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn654" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P654MaximumBinaryTree .java" />
+              <option name="titleSlug" value="maximum-binary-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P6ZigzagConversion .java">
           <value>
             <LeetcodeEditor>
@@ -704,6 +737,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P6ZigzagConversion .java" />
               <option name="titleSlug" value="zigzag-conversion" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P700SearchInABinarySearchTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P700SearchInABinarySearchTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn700" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P700SearchInABinarySearchTree .java" />
+              <option name="titleSlug" value="search-in-a-binary-search-tree" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -792,6 +836,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P977SquaresOfASortedArray .java" />
               <option name="titleSlug" value="squares-of-a-sorted-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P98ValidateBinarySearchTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P98ValidateBinarySearchTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn98" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P98ValidateBinarySearchTree .java" />
+              <option name="titleSlug" value="validate-binary-search-tree" />
             </LeetcodeEditor>
           </value>
         </entry>

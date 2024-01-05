@@ -118,6 +118,57 @@ class P105ConstructBinaryTreeFromPreorderAndInorderTraversal {
             }
             return root;
         }
+
+        // Encodes a tree to a single string.
+        String serialize(TreeNode root) {
+            List<Integer> ans = new ArrayList<>();
+            if (root == null){
+                return ans.toString();
+            }
+            Deque<TreeNode> queue = new LinkedList<>();
+            queue.offer(root);
+            while(!queue.isEmpty()){
+                int size = queue.size();
+                while (size -- > 0){
+                    TreeNode node = queue.poll();
+                    if (node == null){
+                        ans.add(null);
+                    }else {
+                        ans.add(node.val);
+                        queue.offer(node.left);
+                        queue.offer(node.right);
+                    }
+                }
+            }
+            return ans.toString();
+        }
+
+        // Decodes your encoded data to tree.
+        TreeNode deserialize(String data) {
+            data = data.replaceAll(" ", "");
+            if (data.equals("[]")){
+                return null;
+            }
+            String[] nodes = data.substring(1, data.length() - 1).split(",");
+            TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
+            Deque<TreeNode> queue = new LinkedList<>();
+            queue.offer(root);
+            int i = 1;
+            while (!queue.isEmpty()){
+                TreeNode node = queue.poll();
+                if (!nodes[i].equals("null")){
+                    node.left = new TreeNode(Integer.parseInt(nodes[i]));
+                    queue.offer(node.left);
+                }
+                i++;
+                if (!nodes[i].equals("null")){
+                    node.right = new TreeNode(Integer.parseInt(nodes[i]));
+                    queue.offer(node.right);
+                }
+                i++;
+            }
+            return root;
+        }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
