@@ -377,6 +377,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P235LowestCommonAncestorOfABinarySearchTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P235LowestCommonAncestorOfABinarySearchTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn235" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P235LowestCommonAncestorOfABinarySearchTree .java" />
+              <option name="titleSlug" value="lowest-common-ancestor-of-a-binary-search-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P236LowestCommonAncestorOfABinaryTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P236LowestCommonAncestorOfABinaryTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn236" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P236LowestCommonAncestorOfABinaryTree .java" />
+              <option name="titleSlug" value="lowest-common-ancestor-of-a-binary-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P239SlidingWindowMaximum .java">
           <value>
             <LeetcodeEditor>
@@ -748,6 +770,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P700SearchInABinarySearchTree .java" />
               <option name="titleSlug" value="search-in-a-binary-search-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P701InsertIntoABinarySearchTree .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P701InsertIntoABinarySearchTree .md" />
+              <option name="frontendQuestionId" value="leetcode.cn701" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P701InsertIntoABinarySearchTree .java" />
+              <option name="titleSlug" value="insert-into-a-binary-search-tree" />
             </LeetcodeEditor>
           </value>
         </entry>
