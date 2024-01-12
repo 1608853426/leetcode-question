@@ -586,6 +586,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P37SudokuSolver .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P37SudokuSolver .md" />
+              <option name="frontendQuestionId" value="leetcode.cn37" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P37SudokuSolver .java" />
+              <option name="titleSlug" value="sudoku-solver" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P383RansomNote .java">
           <value>
             <LeetcodeEditor>
@@ -696,6 +707,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P455AssignCookies .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P455AssignCookies .md" />
+              <option name="frontendQuestionId" value="leetcode.cn455" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P455AssignCookies .java" />
+              <option name="titleSlug" value="assign-cookies" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P459RepeatedSubstringPattern .java">
           <value>
             <LeetcodeEditor>
@@ -792,6 +814,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P515FindLargestValueInEachTreeRow .java" />
               <option name="titleSlug" value="find-largest-value-in-each-tree-row" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P51NQueens .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/doc/content/P51NQueens .md" />
+              <option name="frontendQuestionId" value="leetcode.cn51" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/main/java/com/soonmachine/leetcode/editor/cn/P51NQueens .java" />
+              <option name="titleSlug" value="n-queens" />
             </LeetcodeEditor>
           </value>
         </entry>
