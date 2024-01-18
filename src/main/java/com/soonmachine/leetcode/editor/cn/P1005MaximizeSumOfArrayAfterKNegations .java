@@ -53,6 +53,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 //java:K 次取反后最大化的数组和
+
+/**
+ * K 次取反后最大化的数组和
+ * 1. 贪心
+ * 贪心策略：先按照气球的左边界排序，然后从左到右遍历，如果当前气球的左边界大于上一支箭的射击位置，那么需要增加一支箭
+ * 时间复杂度：O(nlogn)
+ * 空间复杂度：O(logn)
+ */
 class P1005MaximizeSumOfArrayAfterKNegations{
     public static void main(String[] args){
         int[] arr = {-3, 4, -2, 1};
