@@ -41,10 +41,7 @@
 package com.soonmachine.leetcode.editor.cn;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -85,6 +82,23 @@ class P17LetterCombinationsOfAPhoneNumber {
             String letters = map[digits.charAt(index) - '0'];
             for (int i = 0; i < letters.length(); i++) {
                 dfs(digits, index + 1, path + letters.charAt(i), ans, map);
+            }
+
+
+
+
+        }
+
+        Map<Character, String> phoneMap;
+        void dfs(List<String> res, StringBuilder sb, int index, String digits){
+            if(index == digits.length()){
+                res.add(new String(sb.toString()));
+                return;
+            }
+            for(char c : phoneMap.get(digits.charAt(index)).toCharArray()){
+                sb.append(c);
+                dfs(res, sb, index + 1, digits);
+                sb.deleteCharAt(sb.length() - 1);
             }
         }
 

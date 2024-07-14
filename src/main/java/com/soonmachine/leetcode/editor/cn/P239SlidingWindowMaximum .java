@@ -52,9 +52,7 @@ package com.soonmachine.leetcode.editor.cn;
  * 4. 队列中的元素个数不会超过k
  */
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
+import java.util.*;
 
 class P239SlidingWindowMaximum {
     public static void main(String[] args) {

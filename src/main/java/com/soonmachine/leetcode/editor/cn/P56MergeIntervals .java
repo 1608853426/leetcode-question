@@ -56,7 +56,7 @@ class P56MergeIntervals{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         List<int[]> ans = new ArrayList<>();
         int left = intervals[0][0], right = intervals[0][1];
         for (int i = 1; i < intervals.length; i++) {

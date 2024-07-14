@@ -57,23 +57,25 @@ class P347TopKFrequentElements{
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
-        for (int x : nums){
-            map.put(x, map.getOrDefault(x, 0) + 1);
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0)+1);
         }
-        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]);
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()){
-            int num = entry.getKey();
-            int count = entry.getValue();
+        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> {return map.get(a) - map.get(b);});
+        for (int x : map.keySet()){
             if (queue.size() < k){
-                queue.offer(new int[]{num, count});
+                queue.offer(x);
             }else {
-                if (queue.peek()[1] < count){
+                if (map.get(queue.peek()) < map.get(x)){
                     queue.poll();
-                    queue.offer(new int[]{num, count});
+                    queue.offer(x);
                 }
             }
         }
-        return queue.stream().mapToInt(o -> o[0]).toArray();
+        int[] res = new int[k];
+        for (int i = k  - 1; i >= 0; i--) {
+            res[i] = queue.poll();
+        }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

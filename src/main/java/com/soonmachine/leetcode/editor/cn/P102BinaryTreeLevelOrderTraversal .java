@@ -79,21 +79,21 @@ class Solution {
         if (root == null){
             return ans;
         }
-        queue.push(root);
+        queue.offer(root);
         while (!queue.isEmpty()){
             int size = queue.size();
-            List<Integer> level = new ArrayList<>();
+            List<Integer> list = new ArrayList<>();
             while (size -- > 0){
                 TreeNode node = queue.pollFirst();
-                level.add(node.val);
-                if (node.left != null){
-                    queue.add(node.left);
+                list.add(node.val);
+                if(node.left != null){
+                    queue.offer(node.left);
                 }
                 if (node.right != null){
-                    queue.add(node.right);
+                    queue.offer(node.right);
                 }
             }
-            ans.add(level);
+            ans.add(list);
         }
         return ans;
     }
